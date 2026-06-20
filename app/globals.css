@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: #ffffff;
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #d97706;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Selection */
+::selection {
+  background: rgba(217, 119, 6, 0.3);
+  color: #ffffff;
+}
+
+/* Gold gradient text utility */
+.gold-text {
+  background: linear-gradient(135deg, #d97706, #f59e0b, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-dark {
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+}
+
+/* Glow effect */
+.glow {
+  box-shadow: 0 0 30px rgba(217, 119, 6, 0.3);
+}
+
+.glow-text {
+  text-shadow: 0 0 30px rgba(217, 119, 6, 0.5);
+}
+
+/* Section heading decoration */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #d97706;
+}
+
+.section-tag::before,
+.section-tag::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d97706);
+}
+
+.section-tag::after {
+  background: linear-gradient(90deg, #d97706, transparent);
+}
+
+/* Gold divider */
+.gold-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d97706, #f59e0b, transparent);
+  border: none;
+}
+
+/* Input focus ring */
+.input-gold:focus {
+  outline: none;
+  border-color: #d97706;
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.2);
+}
+
+/* Floating label */
+.floating-label-group {
+  position: relative;
+}
+
+.floating-label-group input:focus + label,
+.floating-label-group input:not(:placeholder-shown) + label,
+.floating-label-group select:focus + label,
+.floating-label-group select:not([value=""]) + label,
+.floating-label-group textarea:focus + label,
+.floating-label-group textarea:not(:placeholder-shown) + label {
+  transform: translateY(-1.5rem) scale(0.75);
+  color: #d97706;
+}
+
+/* Hero slider */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+/* Masonry grid */
+.masonry-grid {
+  columns: 3;
+  column-gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .masonry-grid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry-grid {
+    columns: 1;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+/* Menu tab active */
+.tab-active {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  color: #0f0f0f;
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(217, 119, 6, 0.2);
+}
+
+/* Scroll indicator bounce */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+.scroll-indicator {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* Counter number */
+.counter-number {
+  font-family: var(--font-playfair);
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #d97706, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
