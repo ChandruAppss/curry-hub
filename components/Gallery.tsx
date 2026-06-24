@@ -152,7 +152,7 @@ export default function Gallery() {
               {f}
               {f !== "All" && (
                 <span className="ml-1.5 text-[10px] opacity-60">
-                  ({f === "All" ? images.length : images.filter((i) => i.category === f).length})
+                  ({images.filter((i) => i.category === f).length})
                 </span>
               )}
             </button>
