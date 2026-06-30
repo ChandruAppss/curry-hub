@@ -59,7 +59,7 @@ export default function Footer() {
                 />
               </div>
             </div>
-            <p className="text-white/50 text-sm leading-relaxed mb-6">
+            <p className="text-gray-500 text-sm leading-relaxed mb-6">
               Bringing the authentic flavours of India to the heart of Bangkok.
               Every dish, a story. Every meal, a memory.
             </p>
@@ -75,9 +75,9 @@ export default function Footer() {
                   aria-label={label}
                   className="w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-300"
                   style={{
-                    background: "rgba(255,255,255,0.04)",
-                    borderColor: "rgba(255,255,255,0.08)",
-                    color: "rgba(255,255,255,0.45)",
+                    background: "rgba(0,0,0,0.04)",
+                    borderColor: "rgba(0,0,0,0.1)",
+                    color: "rgba(0,0,0,0.4)",
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLElement;
@@ -87,9 +87,9 @@ export default function Footer() {
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget as HTMLElement;
-                    el.style.color = "rgba(255,255,255,0.45)";
-                    el.style.borderColor = "rgba(255,255,255,0.08)";
-                    el.style.background = "rgba(255,255,255,0.04)";
+                    el.style.color = "rgba(0,0,0,0.4)";
+                    el.style.borderColor = "rgba(0,0,0,0.1)";
+                    el.style.background = "rgba(0,0,0,0.04)";
                   }}
                 >
                   <Icon className="w-4 h-4" />
@@ -100,7 +100,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-playfair text-lg font-bold text-white mb-6">
+            <h3 className="font-playfair text-lg font-bold text-gray-900 mb-6">
               Quick Links
             </h3>
             <ul className="space-y-3">
@@ -108,7 +108,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <button
                     onClick={() => scrollTo(link.href)}
-                    className="text-sm text-white/48 hover:text-primary transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-sm text-gray-500 hover:text-primary transition-colors duration-300 flex items-center gap-2 group"
                   >
                     <span className="w-1 h-1 rounded-full bg-primary/35 group-hover:bg-primary transition-colors" />
                     {link.label}
@@ -120,7 +120,7 @@ export default function Footer() {
 
           {/* Hours */}
           <div>
-            <h3 className="font-playfair text-lg font-bold text-white mb-6">
+            <h3 className="font-playfair text-lg font-bold text-gray-900 mb-6">
               Opening Hours
             </h3>
             <div className="space-y-3">
@@ -128,8 +128,8 @@ export default function Footer() {
                 <div key={day} className="flex items-start gap-2">
                   <Clock className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-sm text-white/68 font-medium">{day}</p>
-                    <p className="text-xs text-white/38">{time}</p>
+                    <p className="text-sm text-gray-700 font-medium">{day}</p>
+                    <p className="text-xs text-gray-400">{time}</p>
                   </div>
                 </div>
               ))}
@@ -138,13 +138,13 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-playfair text-lg font-bold text-white mb-6">
+            <h3 className="font-playfair text-lg font-bold text-gray-900 mb-6">
               Contact
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                <p className="text-sm text-white/48 leading-relaxed">
+                <p className="text-sm text-gray-500 leading-relaxed">
                   Ally 35, 5 Mana Witthaya Alley,
                   <br />
                   Khlong Ton Sai, Khlong San,
@@ -156,7 +156,7 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-primary shrink-0" />
                 <a
                   href="tel:+66643073879"
-                  className="text-sm text-white/48 hover:text-primary transition-colors"
+                  className="text-sm text-gray-500 hover:text-primary transition-colors"
                 >
                   +66 64 307 3879
                 </a>
@@ -165,7 +165,7 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-primary shrink-0" />
                 <a
                   href="mailto:info@curryhub.co.th"
-                  className="text-sm text-white/48 hover:text-primary transition-colors"
+                  className="text-sm text-gray-500 hover:text-primary transition-colors"
                 >
                   info@curryhub.co.th
                 </a>
@@ -185,8 +185,8 @@ export default function Footer() {
 
       {/* SEO text block */}
       <div
-        className="border-t border-white/5"
-        style={{ background: "rgba(0,0,0,0.3)" }}
+        className="border-t border-gray-100"
+        style={{ background: "rgba(0,0,0,0.03)" }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
           <motion.p
@@ -194,7 +194,7 @@ export default function Footer() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="text-white/22 text-xs leading-relaxed text-center max-w-4xl mx-auto"
+            className="text-gray-400 text-xs leading-relaxed text-center max-w-4xl mx-auto"
           >
             Curry Hub Bangkok is an authentic Indian restaurant in Khlong San, Bangkok — celebrated as one of the best Indian restaurants in Bangkok for its rich Butter Chicken, aromatic Dum Biryani, and tandoor-grilled Tandoori Chicken. Whether you&apos;re searching for the best butter chicken Bangkok, a cosy Indian restaurant near ICONSIAM, or a top-rated curry house in Khlong San, Curry Hub delivers genuine North and South Indian cuisine crafted by our award-winning chef. Open for dine-in, delivery, and private event bookings. Reserve your table online or WhatsApp us directly.
           </motion.p>
@@ -211,14 +211,14 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-white/28 text-xs text-center sm:text-left">
+        <p className="text-gray-400 text-xs text-center sm:text-left">
           © 2025 Curry Hub Bangkok. All rights reserved.
         </p>
         <div className="flex gap-6">
-          <a href="#" className="text-white/28 text-xs hover:text-white/48 transition-colors">
+          <a href="#" className="text-gray-400 text-xs hover:text-gray-600 transition-colors">
             Privacy Policy
           </a>
-          <a href="#" className="text-white/28 text-xs hover:text-white/48 transition-colors">
+          <a href="#" className="text-gray-400 text-xs hover:text-gray-600 transition-colors">
             Terms of Service
           </a>
         </div>

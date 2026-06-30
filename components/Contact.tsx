@@ -76,10 +76,10 @@ export default function Contact() {
           <div className="section-tag justify-center mb-4">
             <span>Get in Touch</span>
           </div>
-          <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-white">
+          <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-gray-900">
             Find <span className="shimmer-gold">Us</span>
           </h2>
-          <p className="mt-4 text-white/52 max-w-lg mx-auto text-sm leading-relaxed">
+          <p className="mt-4 text-gray-500 max-w-lg mx-auto text-sm leading-relaxed">
             We&apos;d love to hear from you. Visit us, call us, or drop us a line —
             we&apos;re here to make your experience perfect.
           </p>
@@ -103,19 +103,20 @@ export default function Contact() {
                     transition={{ duration: 0.5, delay: i * 0.1 }}
                     className="group p-6 rounded-2xl transition-all duration-300"
                     style={{
-                      background: "linear-gradient(160deg, rgba(26,20,10,0.97), rgba(15,12,8,1))",
-                      border: "1px solid rgba(255,255,255,0.05)",
+                      background: "#ffffff",
+                      border: "1px solid rgba(0,0,0,0.07)",
+                      boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
                       transition: "border-color 0.3s ease, box-shadow 0.3s ease",
                     }}
                     onMouseEnter={(e) => {
                       const el = e.currentTarget as HTMLElement;
                       el.style.borderColor = "rgba(217,119,6,0.3)";
-                      el.style.boxShadow = "0 16px 40px rgba(0,0,0,0.4), 0 0 20px rgba(217,119,6,0.05)";
+                      el.style.boxShadow = "0 12px 36px rgba(0,0,0,0.1), 0 0 20px rgba(217,119,6,0.05)";
                     }}
                     onMouseLeave={(e) => {
                       const el = e.currentTarget as HTMLElement;
-                      el.style.borderColor = "rgba(255,255,255,0.05)";
-                      el.style.boxShadow = "none";
+                      el.style.borderColor = "rgba(0,0,0,0.07)";
+                      el.style.boxShadow = "0 2px 12px rgba(0,0,0,0.05)";
                     }}
                   >
                     <div
@@ -124,11 +125,11 @@ export default function Contact() {
                     >
                       <Icon className="w-5 h-5 text-primary" />
                     </div>
-                    <h3 className="font-semibold text-white mb-2 text-sm">
+                    <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                       {item.title}
                     </h3>
                     {item.lines.map((line) => (
-                      <p key={line} className="text-white/45 text-sm leading-relaxed">
+                      <p key={line} className="text-gray-500 text-sm leading-relaxed">
                         {line}
                       </p>
                     ))}
@@ -188,9 +189,9 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="flex flex-col items-center gap-2 p-4 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-105"
                 style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  color: "rgba(255,255,255,0.7)",
+                  background: "rgba(0,0,0,0.04)",
+                  border: "1px solid rgba(0,0,0,0.1)",
+                  color: "rgba(0,0,0,0.55)",
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
@@ -199,8 +200,8 @@ export default function Contact() {
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = "rgba(255,255,255,0.1)";
-                  el.style.color = "rgba(255,255,255,0.7)";
+                  el.style.borderColor = "rgba(0,0,0,0.1)";
+                  el.style.color = "rgba(0,0,0,0.55)";
                 }}
               >
                 <Navigation className="w-5 h-5" />
