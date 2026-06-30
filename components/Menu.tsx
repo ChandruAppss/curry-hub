@@ -88,14 +88,13 @@ function TiltCard({ item, index }: { item: MenuItem; index: number }) {
     const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
     const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
     ref.current.style.transform = `perspective(700px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) translateZ(6px)`;
-    ref.current.style.boxShadow = `${-x * 8}px ${y * 8}px 28px rgba(217,119,6,${0.08 + Math.abs(x) * 0.06})`;
+    ref.current.style.boxShadow = `${-x * 6}px ${y * 6}px 24px rgba(217,119,6,${0.06 + Math.abs(x) * 0.04})`;
   };
 
   const handleMouseLeave = () => {
     if (!ref.current) return;
-    ref.current.style.transform =
-      "perspective(700px) rotateY(0deg) rotateX(0deg) translateZ(0)";
-    ref.current.style.boxShadow = "none";
+    ref.current.style.transform = "perspective(700px) rotateY(0deg) rotateX(0deg) translateZ(0)";
+    ref.current.style.boxShadow = "0 2px 12px rgba(0,0,0,0.05)";
   };
 
   return (
@@ -108,27 +107,26 @@ function TiltCard({ item, index }: { item: MenuItem; index: number }) {
       onMouseLeave={handleMouseLeave}
       className="menu-card-luxury group flex items-start gap-4 p-5 rounded-xl cursor-default"
       style={{
-        transition:
-          "transform 0.22s cubic-bezier(0.23,1,0.32,1), box-shadow 0.22s ease, border-color 0.3s ease",
+        transition: "transform 0.22s cubic-bezier(0.23,1,0.32,1), box-shadow 0.22s ease, border-color 0.3s ease",
       }}
     >
       {/* Left dot accent */}
       <div className="shrink-0 mt-1.5">
         <div
-          className="w-1.5 h-1.5 rounded-full transition-colors duration-300 group-hover:shadow-[0_0_8px_rgba(217,119,6,0.8)]"
-          style={{ background: item.popular ? "#d97706" : "rgba(255,255,255,0.15)" }}
+          className="w-1.5 h-1.5 rounded-full transition-colors duration-300 group-hover:shadow-[0_0_8px_rgba(217,119,6,0.7)]"
+          style={{ background: item.popular ? "#d97706" : "rgba(0,0,0,0.15)" }}
         />
       </div>
 
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-          <h3 className="font-inter font-semibold text-white group-hover:text-primary transition-colors duration-300 text-base leading-tight">
+          <h3 className="font-inter font-semibold text-gray-900 group-hover:text-primary transition-colors duration-300 text-base leading-tight">
             {item.name}
           </h3>
           <div className="flex items-center gap-1">
             {item.veg && (
               <span title="Vegetarian">
-                <Leaf className="w-3.5 h-3.5 text-green-500" />
+                <Leaf className="w-3.5 h-3.5 text-green-600" />
               </span>
             )}
             {item.spicy && (
@@ -137,20 +135,20 @@ function TiltCard({ item, index }: { item: MenuItem; index: number }) {
               </span>
             )}
             {item.popular && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full font-semibold tracking-wide"
-                style={{ background: "rgba(217,119,6,0.15)", color: "#d97706" }}>
-                Chef's Pick
+              <span
+                className="text-[10px] px-2 py-0.5 rounded-full font-semibold tracking-wide"
+                style={{ background: "rgba(217,119,6,0.1)", color: "#d97706" }}
+              >
+                Chef&apos;s Pick
               </span>
             )}
           </div>
         </div>
-        <p className="text-sm text-white/45 leading-relaxed">{item.description}</p>
+        <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
       </div>
 
       <div className="shrink-0 flex flex-col items-end gap-1">
-        <span className="font-playfair font-bold text-lg price-shimmer">
-          {item.price}
-        </span>
+        <span className="font-playfair font-bold text-lg price-shimmer">{item.price}</span>
       </div>
     </motion.div>
   );
@@ -163,12 +161,12 @@ export default function Menu() {
 
   return (
     <section id="menu" className="py-24 lg:py-32 bg-surface relative overflow-hidden">
-      {/* Subtle background radial */}
-      <div className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(217,119,6,0.04) 0%, transparent 65%)" }} />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(217,119,6,0.04) 0%, transparent 65%)" }}
+      />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Heading */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -179,10 +177,10 @@ export default function Menu() {
           <div className="section-tag justify-center mb-4">
             <span>What We Serve</span>
           </div>
-          <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-white">
+          <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-gray-900">
             Our <span className="shimmer-gold">Menu</span>
           </h2>
-          <p className="mt-4 text-white/55 max-w-lg mx-auto text-sm leading-relaxed">
+          <p className="mt-4 text-gray-500 max-w-lg mx-auto text-sm leading-relaxed">
             Explore our extensive menu of authentic Indian dishes, lovingly prepared with
             imported spices and traditional techniques.
           </p>
@@ -201,8 +199,8 @@ export default function Menu() {
               onClick={() => setActiveTab(tab)}
               className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeTab === tab
-                  ? "text-black font-semibold shadow-lg shadow-primary/25"
-                  : "bg-white/5 text-white/55 hover:text-white hover:bg-white/10 border border-white/8"
+                  ? "text-black font-semibold shadow-md shadow-primary/20"
+                  : "bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200 border border-gray-200"
               }`}
               style={
                 activeTab === tab
@@ -232,9 +230,9 @@ export default function Menu() {
         </AnimatePresence>
 
         {/* Legend */}
-        <div className="mt-10 flex items-center justify-center gap-6 text-xs text-white/35">
+        <div className="mt-10 flex items-center justify-center gap-6 text-xs text-gray-400">
           <div className="flex items-center gap-1.5">
-            <Leaf className="w-3.5 h-3.5 text-green-500" />
+            <Leaf className="w-3.5 h-3.5 text-green-600" />
             <span>Vegetarian</span>
           </div>
           <div className="flex items-center gap-1.5">

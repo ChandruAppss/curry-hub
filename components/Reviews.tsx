@@ -83,8 +83,8 @@ export default function Reviews() {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5);
-    const y = ((e.clientY - rect.top) / rect.height - 0.5);
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
     cardRef.current.style.transform = `perspective(1000px) rotateY(${x * 7}deg) rotateX(${-y * 5}deg)`;
   };
 
@@ -103,11 +103,12 @@ export default function Reviews() {
 
   return (
     <section className="py-24 lg:py-32 bg-surface relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at center, rgba(217,119,6,0.05) 0%, transparent 70%)" }} />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at center, rgba(217,119,6,0.04) 0%, transparent 70%)" }}
+      />
 
       <div className="relative max-w-5xl mx-auto px-6 lg:px-8">
-        {/* Heading */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -118,7 +119,7 @@ export default function Reviews() {
           <div className="section-tag justify-center mb-4">
             <span>Guest Experiences</span>
           </div>
-          <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-white">
+          <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-gray-900">
             What Our Guests <span className="shimmer-gold">Say</span>
           </h2>
 
@@ -129,15 +130,22 @@ export default function Reviews() {
                 <Star key={i} className="w-5 h-5 fill-primary text-primary" />
               ))}
             </div>
-            <span className="text-white font-bold text-lg">4.8</span>
-            <span className="text-white/35 text-sm">/ 5.0 · 324 verified reviews</span>
+            <span className="text-gray-900 font-bold text-lg">4.8</span>
+            <span className="text-gray-400 text-sm">/ 5.0 · 324 verified reviews</span>
           </div>
 
           {/* Platform badges */}
           <div className="mt-4 flex items-center justify-center gap-3">
             {["Google", "TripAdvisor"].map((p) => (
-              <span key={p} className="text-xs px-3 py-1 rounded-full font-medium"
-                style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.4)" }}>
+              <span
+                key={p}
+                className="text-xs px-3 py-1 rounded-full font-medium"
+                style={{
+                  background: "rgba(0,0,0,0.04)",
+                  border: "1px solid rgba(0,0,0,0.1)",
+                  color: "rgba(0,0,0,0.45)",
+                }}
+              >
                 {p}
               </span>
             ))}
@@ -150,12 +158,8 @@ export default function Reviews() {
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
-          {/* Large decorative quote */}
-          <span
-            className="deco-quote absolute -top-4 left-0 lg:left-4 pointer-events-none select-none"
-            aria-hidden="true"
-          >
-            "
+          <span className="deco-quote absolute -top-4 left-0 lg:left-4 pointer-events-none select-none" aria-hidden="true">
+            &ldquo;
           </span>
 
           <AnimatePresence custom={direction} mode="wait">
@@ -169,10 +173,7 @@ export default function Reviews() {
               transition={{ duration: 0.45, ease: "easeInOut" }}
               className="w-full"
             >
-              <div
-                ref={cardRef}
-                className="glass-luxury rounded-2xl p-8 lg:p-12 review-card-3d"
-              >
+              <div ref={cardRef} className="glass-luxury rounded-2xl p-8 lg:p-12 review-card-3d">
                 {/* Stars */}
                 <div className="flex justify-center gap-1 mb-6">
                   {[...Array(review.rating)].map((_, i) => (
@@ -181,22 +182,24 @@ export default function Reviews() {
                 </div>
 
                 {/* Quote text */}
-                <p className="font-playfair text-xl lg:text-2xl text-white/88 italic leading-relaxed mb-8 max-w-3xl mx-auto text-center">
-                  "{review.text}"
+                <p className="font-playfair text-xl lg:text-2xl text-gray-800 italic leading-relaxed mb-8 max-w-3xl mx-auto text-center">
+                  &ldquo;{review.text}&rdquo;
                 </p>
 
                 {/* Dish ordered */}
                 <div className="text-center mb-7">
-                  <span className="text-xs uppercase tracking-widest text-white/30 mr-2">Ordered:</span>
-                  <span className="text-sm font-medium" style={{ color: "rgba(217,119,6,0.75)" }}>
+                  <span className="text-xs uppercase tracking-widest text-gray-400 mr-2">Ordered:</span>
+                  <span className="text-sm font-medium" style={{ color: "#b45309" }}>
                     {review.dish}
                   </span>
                 </div>
 
                 {/* Reviewer */}
                 <div className="flex items-center justify-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden"
-                    style={{ border: "2px solid rgba(217,119,6,0.35)" }}>
+                  <div
+                    className="relative w-14 h-14 rounded-full overflow-hidden"
+                    style={{ border: "2px solid rgba(217,119,6,0.35)" }}
+                  >
                     <Image
                       src={review.avatar}
                       alt={review.name}
@@ -206,13 +209,19 @@ export default function Reviews() {
                     />
                   </div>
                   <div className="text-left">
-                    <p className="font-semibold text-white">{review.name}</p>
-                    <p className="text-sm text-white/38">
+                    <p className="font-semibold text-gray-900">{review.name}</p>
+                    <p className="text-sm text-gray-400">
                       {review.role} · {review.location}
                     </p>
                   </div>
-                  <span className="ml-3 text-xs px-2.5 py-1 rounded-full font-medium"
-                    style={{ background: "rgba(217,119,6,0.12)", color: "rgba(217,119,6,0.8)", border: "1px solid rgba(217,119,6,0.2)" }}>
+                  <span
+                    className="ml-3 text-xs px-2.5 py-1 rounded-full font-medium"
+                    style={{
+                      background: "rgba(217,119,6,0.1)",
+                      color: "#b45309",
+                      border: "1px solid rgba(217,119,6,0.2)",
+                    }}
+                  >
                     via {review.platform}
                   </span>
                 </div>
@@ -227,13 +236,13 @@ export default function Reviews() {
             <button
               key={i}
               onClick={() => goTo(i)}
-              className="rounded-full transition-all duration-400"
+              className="rounded-full transition-all duration-300"
               style={{
                 width: i === current ? "2rem" : "0.5rem",
                 height: "0.5rem",
                 background: i === current
                   ? "linear-gradient(90deg, #d97706, #fbbf24)"
-                  : "rgba(255,255,255,0.18)",
+                  : "rgba(0,0,0,0.15)",
               }}
               aria-label={`Review ${i + 1}`}
             />

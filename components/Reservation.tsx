@@ -67,12 +67,12 @@ function FloatingInput({
             ? "border-red-500/60"
             : active
             ? "border-primary/70 shadow-lg shadow-primary/10"
-            : "border-white/8 hover:border-white/18"
+            : "border-gray-200 hover:border-gray-300"
         }`}
       >
         <Icon
           className={`absolute left-4 w-4 h-4 transition-colors duration-300 ${
-            active ? "text-primary" : "text-white/25"
+            active ? "text-primary" : "text-gray-400"
           }`}
         />
         <input
@@ -85,14 +85,14 @@ function FloatingInput({
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           placeholder=" "
-          className="w-full pl-11 pr-4 pt-6 pb-2 bg-transparent text-white text-sm focus:outline-none"
+          className="w-full pl-11 pr-4 pt-6 pb-2 bg-transparent text-gray-900 text-sm focus:outline-none"
         />
         <label
           htmlFor={id}
           className={`absolute left-11 transition-all duration-300 pointer-events-none ${
             active
               ? "top-2 text-[10px] font-medium text-primary"
-              : "top-1/2 -translate-y-1/2 text-sm text-white/35"
+              : "top-1/2 -translate-y-1/2 text-sm text-gray-400"
           }`}
         >
           {label}
@@ -195,10 +195,10 @@ export default function Reservation() {
             <div className="section-tag mb-4">
               <span>Book Your Table</span>
             </div>
-            <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-white mb-5">
+            <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-gray-900 mb-5">
               Reserve a <span className="shimmer-gold">Table</span>
             </h2>
-            <p className="text-white/52 leading-relaxed mb-8 text-sm">
+            <p className="text-gray-500 leading-relaxed mb-8 text-sm">
               Join us for an unforgettable Indian dining experience. Whether it&apos;s
               an intimate dinner for two, a family celebration, or a corporate
               event — we&apos;ll make your evening exceptional.
@@ -208,12 +208,12 @@ export default function Reservation() {
             <div
               className="flex items-center gap-2.5 mb-7 px-4 py-3 rounded-xl"
               style={{
-                background: "rgba(217,119,6,0.07)",
-                border: "1px solid rgba(217,119,6,0.2)",
+                background: "rgba(217,119,6,0.06)",
+                border: "1px solid rgba(217,119,6,0.18)",
               }}
             >
               <Zap className="w-4 h-4 text-primary shrink-0" />
-              <p className="text-sm text-white/70">
+              <p className="text-sm text-gray-600">
                 <span className="text-primary font-semibold">Popular</span> — 12
                 reservations made today. Weekend evenings fill fast.
               </p>
@@ -247,8 +247,8 @@ export default function Reservation() {
                       <Icon className="w-4.5 h-4.5 text-primary" style={{ width: "1.1rem", height: "1.1rem" }} />
                     </div>
                     <div>
-                      <p className="font-semibold text-white text-sm">{item.title}</p>
-                      <p className="text-white/42 text-sm mt-0.5">{item.desc}</p>
+                      <p className="font-semibold text-gray-900 text-sm">{item.title}</p>
+                      <p className="text-gray-500 text-sm mt-0.5">{item.desc}</p>
                     </div>
                   </div>
                 );
@@ -266,14 +266,14 @@ export default function Reservation() {
               <p className="text-primary font-semibold text-sm mb-1">
                 Prefer WhatsApp?
               </p>
-              <p className="text-white/45 text-sm leading-relaxed mb-3">
+              <p className="text-gray-500 text-sm leading-relaxed mb-3">
                 Message us directly and we&apos;ll confirm your booking instantly.
               </p>
               <a
                 href="https://wa.me/66643073879?text=Hi!%20I%27d%20like%20to%20book%20a%20table%20at%20Curry%20Hub."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 hover:text-emerald-700 transition-colors"
               >
                 <MessageCircle className="w-4 h-4" />
                 Chat on WhatsApp →
@@ -306,19 +306,19 @@ export default function Reservation() {
                     >
                       <CheckCircle className="w-10 h-10 text-primary" />
                     </motion.div>
-                    <h3 className="font-playfair text-2xl font-bold text-white mb-3">
+                    <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-3">
                       Reservation Received!
                     </h3>
-                    <p className="text-white/52 text-sm leading-relaxed mb-1">
+                    <p className="text-gray-500 text-sm leading-relaxed mb-1">
                       Thank you,{" "}
                       <span className="text-primary font-medium">
                         {form.name.split(" ")[0]}
                       </span>
                       . We&apos;ve received your reservation.
                     </p>
-                    <p className="text-white/38 text-sm">
+                    <p className="text-gray-400 text-sm">
                       We&apos;ll confirm via{" "}
-                      <span className="text-white/62">{form.phone}</span> within
+                      <span className="text-gray-600">{form.phone}</span> within
                       30 minutes.
                     </p>
                     <button
@@ -343,7 +343,7 @@ export default function Reservation() {
                   <motion.div key="form">
                     {/* Header */}
                     <div className="mb-7">
-                      <h3 className="font-playfair text-2xl font-bold text-white mb-5">
+                      <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-5">
                         Book Your Table
                       </h3>
 
@@ -367,7 +367,7 @@ export default function Reservation() {
                                 className={`text-[10px] tracking-wide whitespace-nowrap ${
                                   step === s.num
                                     ? "text-primary"
-                                    : "text-white/28"
+                                    : "text-gray-400"
                                 }`}
                               >
                                 {s.label}
@@ -459,24 +459,24 @@ export default function Reservation() {
                                   ? "border-red-500/60"
                                   : form.time
                                   ? "border-primary/70 shadow-lg shadow-primary/10"
-                                  : "border-white/8 hover:border-white/18"
+                                  : "border-gray-200 hover:border-gray-300"
                               }`}
                             >
                               <Clock
                                 className={`absolute left-4 w-4 h-4 transition-colors ${
-                                  form.time ? "text-primary" : "text-white/25"
+                                  form.time ? "text-primary" : "text-gray-400"
                                 }`}
                               />
                               <select
                                 value={form.time}
                                 onChange={(e) => set("time")(e.target.value)}
-                                className="w-full pl-11 pr-4 pt-6 pb-2 bg-transparent text-white text-sm focus:outline-none appearance-none cursor-pointer"
+                                className="w-full pl-11 pr-4 pt-6 pb-2 bg-transparent text-gray-900 text-sm focus:outline-none appearance-none cursor-pointer"
                               >
-                                <option value="" disabled className="bg-surface-2">
+                                <option value="" disabled className="bg-white">
                                   Select time
                                 </option>
                                 {timeSlots.map((t) => (
-                                  <option key={t} value={t} className="bg-surface-2">
+                                  <option key={t} value={t} className="bg-white">
                                     {t}
                                   </option>
                                 ))}
@@ -485,7 +485,7 @@ export default function Reservation() {
                                 className={`absolute left-11 transition-all duration-300 pointer-events-none ${
                                   form.time
                                     ? "top-2 text-[10px] font-medium text-primary"
-                                    : "top-1/2 -translate-y-1/2 text-sm text-white/35"
+                                    : "top-1/2 -translate-y-1/2 text-sm text-gray-400"
                                 }`}
                               >
                                 Preferred Time
@@ -503,7 +503,7 @@ export default function Reservation() {
                             <button
                               type="button"
                               onClick={goPrev}
-                              className="flex-1 py-4 rounded-xl text-sm font-medium text-white/55 hover:text-white border border-white/10 hover:border-white/22 transition-all duration-300 flex items-center justify-center gap-2"
+                              className="flex-1 py-4 rounded-xl text-sm font-medium text-gray-500 hover:text-gray-900 border border-gray-200 hover:border-gray-300 transition-all duration-300 flex items-center justify-center gap-2"
                             >
                               <ChevronLeft className="w-4 h-4" />
                               Back
@@ -542,12 +542,12 @@ export default function Reservation() {
                               className={`relative flex items-start bg-surface-2 rounded-xl border transition-all duration-300 ${
                                 form.message
                                   ? "border-primary/70 shadow-lg shadow-primary/10"
-                                  : "border-white/8 hover:border-white/18"
+                                  : "border-gray-200 hover:border-gray-300"
                               }`}
                             >
                               <MessageSquare
                                 className={`absolute left-4 top-4 w-4 h-4 transition-colors ${
-                                  form.message ? "text-primary" : "text-white/25"
+                                  form.message ? "text-primary" : "text-gray-400"
                                 }`}
                               />
                               <textarea
@@ -555,7 +555,7 @@ export default function Reservation() {
                                 onChange={(e) => set("message")(e.target.value)}
                                 rows={4}
                                 placeholder="Special requests, dietary needs, occasion, allergies..."
-                                className="w-full pl-11 pr-4 pt-4 pb-3 bg-transparent text-white text-sm focus:outline-none resize-none placeholder:text-white/22"
+                                className="w-full pl-11 pr-4 pt-4 pb-3 bg-transparent text-gray-900 text-sm focus:outline-none resize-none placeholder:text-gray-300"
                               />
                             </div>
                           </div>
@@ -578,8 +578,8 @@ export default function Reservation() {
                               { label: "Guests", value: form.guests },
                             ].map((r) => (
                               <div key={r.label} className="flex justify-between">
-                                <span className="text-white/35">{r.label}</span>
-                                <span className="text-white/70">{r.value}</span>
+                                <span className="text-gray-400">{r.label}</span>
+                                <span className="text-gray-700">{r.value}</span>
                               </div>
                             ))}
                           </div>
@@ -588,7 +588,7 @@ export default function Reservation() {
                             <button
                               type="button"
                               onClick={goPrev}
-                              className="flex-1 py-4 rounded-xl text-sm font-medium text-white/55 hover:text-white border border-white/10 hover:border-white/22 transition-all duration-300 flex items-center justify-center gap-2"
+                              className="flex-1 py-4 rounded-xl text-sm font-medium text-gray-500 hover:text-gray-900 border border-gray-200 hover:border-gray-300 transition-all duration-300 flex items-center justify-center gap-2"
                             >
                               <ChevronLeft className="w-4 h-4" />
                               Back
@@ -623,7 +623,7 @@ export default function Reservation() {
                             ].map((t) => (
                               <span
                                 key={t}
-                                className="flex items-center gap-1 text-[11px] text-white/32"
+                                className="flex items-center gap-1 text-[11px] text-gray-400"
                               >
                                 <ShieldCheck className="w-3 h-3 text-primary/50" />
                                 {t}

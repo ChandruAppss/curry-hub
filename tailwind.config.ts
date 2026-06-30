@@ -12,9 +12,9 @@ const config: Config = {
         primary: "#D97706",
         secondary: "#F59E0B",
         accent: "#FBBF24",
-        background: "#0F0F0F",
-        surface: "#1A1A1A",
-        "surface-2": "#242424",
+        background: "#FFFFFF",
+        surface: "#F8F5EE",
+        "surface-2": "#EDE8DC",
       },
       fontFamily: {
         playfair: ["var(--font-playfair)", "Georgia", "serif"],

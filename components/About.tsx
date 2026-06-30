@@ -78,7 +78,7 @@ export default function About() {
           >
             <motion.div
               variants={fadeUp}
-              className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden"
+              className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-xl"
             >
               <Image
                 src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=85"
@@ -87,29 +87,29 @@ export default function About() {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </motion.div>
 
             {/* Floating accent card */}
             <motion.div
               variants={fadeUp}
-              className="absolute -bottom-6 -right-6 lg:-right-10 glass-dark rounded-2xl p-6 w-52 shadow-2xl"
+              className="absolute -bottom-6 -right-6 lg:-right-10 glass-dark rounded-2xl p-6 w-52 shadow-xl"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
-                <span className="text-xs text-white/60 uppercase tracking-widest">
+                <span className="text-xs text-gray-500 uppercase tracking-widest">
                   Established
                 </span>
               </div>
               <p className="font-playfair text-3xl font-bold gold-text">2009</p>
-              <p className="text-sm text-white/50 mt-1">
-                Bangkok's Finest Indian Cuisine
+              <p className="text-sm text-gray-500 mt-1">
+                Bangkok&apos;s Finest Indian Cuisine
               </p>
             </motion.div>
 
             {/* Decorative element */}
             <div className="absolute -top-8 -left-8 w-32 h-32 border border-primary/20 rounded-full" />
-            <div className="absolute -top-4 -left-4 w-16 h-16 border border-primary/40 rounded-full" />
+            <div className="absolute -top-4 -left-4 w-16 h-16 border border-primary/35 rounded-full" />
           </motion.div>
 
           {/* Right — Content */}
@@ -121,20 +121,20 @@ export default function About() {
           >
             <motion.div variants={fadeUp}>
               <div className="section-tag mb-4">Our Story</div>
-              <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-white leading-tight">
+              <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Welcome to{" "}
                 <span className="gold-text">Curry Hub</span>
               </h2>
             </motion.div>
 
             <motion.div variants={fadeUp} className="space-y-4">
-              <p className="text-white/70 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 Nestled in the vibrant heart of Bangkok, Curry Hub is a
-                celebration of India's rich culinary heritage. Since 2009, we
+                celebration of India&apos;s rich culinary heritage. Since 2009, we
                 have been bringing the authentic tastes, aromas, and traditions
                 of Indian cooking to the people of Thailand and beyond.
               </p>
-              <p className="text-white/70 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 Every dish on our menu is crafted from family recipes passed
                 down through generations — using hand-selected whole spices,
                 farm-fresh produce, and cooking techniques refined over decades.
@@ -142,7 +142,7 @@ export default function About() {
                 richness of our slow-simmered curries, each meal is a journey to
                 the heart of India.
               </p>
-              <p className="text-white/70 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 Our team of expert Indian chefs, led by Head Chef Rajesh Kumar,
                 brings over 20 years of culinary mastery. Combined with warm,
                 attentive service and an elegant dining atmosphere, we offer
@@ -155,25 +155,18 @@ export default function About() {
             </motion.div>
 
             {/* Stats */}
-            <motion.div
-              variants={staggerChildren}
-              className="grid grid-cols-3 gap-6"
-            >
+            <motion.div variants={staggerChildren} className="grid grid-cols-3 gap-6">
               {stats.map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <motion.div
-                    key={stat.label}
-                    variants={fadeUp}
-                    className="text-center"
-                  >
+                  <motion.div key={stat.label} variants={fadeUp} className="text-center">
                     <Icon className="w-6 h-6 text-primary mx-auto mb-2" />
                     <CounterNumber
                       value={stat.value}
                       suffix={stat.suffix}
                       isVisible={isInView}
                     />
-                    <p className="text-xs text-white/50 mt-1 leading-tight">
+                    <p className="text-xs text-gray-500 mt-1 leading-tight">
                       {stat.label}
                     </p>
                   </motion.div>

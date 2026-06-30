@@ -6,40 +6,32 @@ import { BookOpen, Sprout, ChefHat, Crown } from "lucide-react";
 
 const features = [
   {
+    num: "01",
     icon: BookOpen,
     title: "Authentic Recipes",
     description:
-      "Our dishes follow recipes passed down through generations, unchanged for centuries. Every spice blend, every cooking method is rooted in the rich culinary traditions of North and South India.",
-    color: "from-amber-600/20 to-amber-400/5",
-    border: "border-amber-500/20 hover:border-amber-500/50",
-    iconBg: "bg-amber-500/10 text-amber-400",
+      "Our dishes follow recipes passed down through generations — unchanged for centuries. Every spice blend and cooking method is rooted in the rich culinary traditions of North and South India.",
   },
   {
+    num: "02",
     icon: Sprout,
     title: "Fresh Ingredients",
     description:
-      "We source the finest produce daily. Our spices are imported directly from India, our meats are locally sourced from certified farms, and our dairy is fresh and farm-sourced — no compromises.",
-    color: "from-green-600/20 to-green-400/5",
-    border: "border-green-500/20 hover:border-green-500/50",
-    iconBg: "bg-green-500/10 text-green-400",
+      "We source the finest produce daily. Our spices are imported directly from India, our meats from certified Thai farms, our dairy fresh and farm-sourced. No compromises, ever.",
   },
   {
+    num: "03",
     icon: ChefHat,
     title: "Expert Chefs",
     description:
-      "Our culinary team is led by Head Chef Rajesh Kumar, a Mumbai-trained master with over 20 years of experience across five-star hotels in India, the UAE, and Southeast Asia.",
-    color: "from-blue-600/20 to-blue-400/5",
-    border: "border-blue-500/20 hover:border-blue-500/50",
-    iconBg: "bg-blue-500/10 text-blue-400",
+      "Our team is led by Head Chef Rajesh Kumar, Mumbai-trained with over 20 years across five-star hotels in India, the UAE, and Southeast Asia. Every plate bears his signature.",
   },
   {
+    num: "04",
     icon: Crown,
     title: "Premium Dining",
     description:
-      "From the moment you arrive, our attentive team ensures an exceptional experience. Our elegantly designed dining room, curated music, and personalised service make every visit memorable.",
-    color: "from-purple-600/20 to-purple-400/5",
-    border: "border-purple-500/20 hover:border-purple-500/50",
-    iconBg: "bg-purple-500/10 text-purple-400",
+      "From the moment you arrive, our attentive team ensures an exceptional experience. An elegantly designed room, curated music, and personalised service make every visit memorable.",
   },
 ];
 
@@ -49,32 +41,35 @@ export default function WhyChooseUs() {
 
   return (
     <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(217,119,6,0.06)_0%,transparent_70%)]" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at top center, rgba(217,119,6,0.04) 0%, transparent 65%)",
+        }}
+      />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Heading */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.65 }}
           className="text-center mb-16"
         >
           <div className="section-tag justify-center mb-4">
             <span>The Curry Hub Difference</span>
           </div>
-          <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-white">
-            Why Choose <span className="gold-text">Us</span>
+          <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-gray-900">
+            Why Choose <span className="shimmer-gold">Us</span>
           </h2>
-          <p className="mt-4 text-white/60 max-w-lg mx-auto leading-relaxed">
-            We are not just a restaurant. We are a commitment to authenticity,
+          <p className="mt-4 text-gray-500 max-w-lg mx-auto text-sm leading-relaxed">
+            We are not just a restaurant — we are a commitment to authenticity,
             quality, and an unparalleled dining experience.
           </p>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {features.map((feature, i) => {
             const Icon = feature.icon;
             return (
@@ -82,42 +77,69 @@ export default function WhyChooseUs() {
                 key={feature.title}
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.12 }}
-                className={`group relative p-8 rounded-2xl bg-gradient-to-b ${feature.color} border ${feature.border} transition-all duration-400 cursor-default`}
+                transition={{ duration: 0.6, delay: i * 0.11 }}
+                className="group relative p-7 rounded-2xl overflow-hidden cursor-default bg-white"
+                style={{
+                  border: "1px solid rgba(0,0,0,0.07)",
+                  boxShadow: "0 2px 16px rgba(0,0,0,0.05)",
+                  transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "rgba(217,119,6,0.3)";
+                  el.style.boxShadow = "0 16px 50px rgba(0,0,0,0.1), 0 0 30px rgba(217,119,6,0.05)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "rgba(0,0,0,0.07)";
+                  el.style.boxShadow = "0 2px 16px rgba(0,0,0,0.05)";
+                }}
               >
-                {/* Icon */}
-                <div
-                  className={`w-14 h-14 rounded-xl ${feature.iconBg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                <span
+                  className="absolute top-4 right-5 font-playfair font-bold text-6xl leading-none select-none pointer-events-none"
+                  style={{ color: "rgba(217,119,6,0.07)" }}
                 >
-                  <Icon className="w-7 h-7" />
+                  {feature.num}
+                </span>
+
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: "rgba(217,119,6,0.1)" }}
+                >
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
 
-                <h3 className="font-playfair text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">
+                <h3 className="font-playfair text-lg font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300 leading-snug">
                   {feature.title}
                 </h3>
 
-                <p className="text-sm text-white/60 leading-relaxed">
+                <p className="text-sm text-gray-500 leading-relaxed">
                   {feature.description}
                 </p>
 
-                {/* Bottom accent */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gold-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl"
+                  style={{
+                    background: "linear-gradient(90deg, transparent, #d97706, #fbbf24, transparent)",
+                  }}
+                />
               </motion.div>
             );
           })}
         </div>
 
-        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-16 text-center"
         >
-          <p className="text-white/50 text-sm mb-6">
+          <p className="text-gray-400 text-sm mb-6">
             Rated{" "}
             <span className="text-primary font-semibold">4.8 / 5.0</span> by
-            over 324 diners on Google Reviews
+            over{" "}
+            <span className="text-gray-700 font-medium">324 diners</span> on
+            Google Reviews
           </p>
           <button
             onClick={() =>
@@ -125,7 +147,8 @@ export default function WhyChooseUs() {
                 .getElementById("reservations")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="px-10 py-4 bg-gold-gradient text-black font-semibold rounded-full hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300"
+            className="px-10 py-4 text-black font-semibold rounded-full text-sm hover:shadow-xl hover:shadow-primary/25 hover:scale-105 transition-all duration-300"
+            style={{ background: "linear-gradient(135deg, #d97706, #f59e0b, #fbbf24)" }}
           >
             Experience It Tonight
           </button>
