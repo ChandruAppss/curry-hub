@@ -31,6 +31,14 @@ const images: GalleryImage[] = [
   { src: "/gallery/Dish 4.webp", alt: "Daily Special", span: "normal", category: "Food" },
   { src: "/gallery/Dish.webp", alt: "Featured Dish", span: "wide", category: "Food" },
   { src: "/gallery/Foods.webp", alt: "Food Spread", span: "normal", category: "Food" },
+  { src: "/gallery/Restaurant Bar.jpg", alt: "Restaurant Bar & Lounge", span: "wide", category: "Restaurant" },
+  { src: "/gallery/Feast Spread.jpg", alt: "Indian Feast Spread", span: "wide", category: "Food" },
+  { src: "/gallery/Butter Chicken.jpg", alt: "Butter Chicken", span: "normal", category: "Food" },
+  { src: "/gallery/Tandoori Chicken.jpg", alt: "Tandoori Chicken", span: "normal", category: "Food" },
+  { src: "/gallery/Lamb Biryani Platter.jpg", alt: "Lamb Biryani Platter", span: "normal", category: "Food" },
+  { src: "/gallery/Chicken Biryani Steam.jpg", alt: "Steaming Chicken Biryani", span: "tall", category: "Food" },
+  { src: "/gallery/Dal Makhani.jpg", alt: "Dal Makhani", span: "normal", category: "Food" },
+  { src: "/gallery/Spice Flat Lay.jpg", alt: "Spices & Dishes", span: "normal", category: "Food" },
 ];
 
 const FILTERS = ["All", "Restaurant", "Food", "Desserts"] as const;
