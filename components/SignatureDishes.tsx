@@ -51,7 +51,7 @@ const dishes = [
     description:
       "Bone-in chicken marinated overnight in yoghurt and spices, roasted in our 450°C clay tandoor oven.",
     price: "฿480",
-    image: "https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=800&q=85",
+    image: "/gmb/gmb-6.jpg",
     badge: "Popular",
     rating: 4.8,
     reviews: 104,
@@ -61,7 +61,7 @@ const dishes = [
     description:
       "Hand-stretched flatbread baked in our clay tandoor, brushed generously with garlic butter and fresh coriander.",
     price: "฿80",
-    image: "https://images.unsplash.com/photo-1595295333158-4742f28fbd85?w=800&q=85",
+    image: "/gallery/Curry Hub Naan & Chai.webp",
     badge: "Must Try",
     rating: 4.8,
     reviews: 201,

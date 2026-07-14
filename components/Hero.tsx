@@ -22,7 +22,7 @@ const slides = [
   },
   {
     id: 1,
-    image: "/gmb/gmb-13.jpg",
+    image: "/gmb/gmb-8.jpg",
     tag: "Chef's Creations",
     words: ["Crafted", "With", "Passion"],
     sub: "Every Dish, a Story",
