@@ -22,15 +22,15 @@ const slides = [
   },
   {
     id: 1,
-    image: "/gmb/gmb-8.jpg",
+    image: "/gmb/gmb-5.jpg",
     tag: "Chef's Creations",
     words: ["Crafted", "With", "Passion"],
     sub: "Every Dish, a Story",
   },
   {
     id: 2,
-    image: "/gmb/gmb-12.jpg",
-    tag: "Signature Biryani",
+    image: "/gmb/gmb-6.jpg",
+    tag: "Tandoor Specialties",
     words: ["A Journey", "Through", "India"],
     sub: "Every Plate Tells a Story",
   },

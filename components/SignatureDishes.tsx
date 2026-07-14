@@ -41,7 +41,7 @@ const dishes = [
     description:
       "Fragrant basmati rice layered with saffron, caramelised onions and succulent meat, slow-cooked sealed.",
     price: "฿380",
-    image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&q=85",
+    image: "/gmb/gmb-8.jpg",
     badge: "Signature",
     rating: 4.9,
     reviews: 115,
