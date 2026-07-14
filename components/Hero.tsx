@@ -139,13 +139,15 @@ export default function Hero() {
       </AnimatePresence>
 
       {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/78 via-black/28 to-black/90 z-10" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/72 via-transparent to-transparent z-10" />
+      {/* Base dark tint so bright restaurant photos always stay readable */}
+      <div className="absolute inset-0 bg-black/45 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/85 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent z-10" />
       <div
         className="absolute inset-0 z-10"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 32%, rgba(0,0,0,0.52) 100%)",
+            "radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.45) 100%)",
         }}
       />
 
