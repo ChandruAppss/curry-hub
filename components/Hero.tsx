@@ -15,25 +15,22 @@ import FloatingParticles from "./FloatingParticles";
 const slides = [
   {
     id: 0,
-    image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=90",
+    image: "/restaurant/interior-dining.webp",
     tag: "Restaurant Interior",
     words: ["Authentic", "Indian", "Flavors"],
     sub: "in Bangkok",
   },
   {
     id: 1,
-    image:
-      "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1920&q=90",
-    tag: "Signature Dishes",
+    image: "/restaurant/interior-bar.webp",
+    tag: "Warm Ambiance",
     words: ["Crafted", "With", "Passion"],
     sub: "Since 2009",
   },
   {
     id: 2,
-    image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90",
-    tag: "Chef's Creations",
+    image: "/restaurant/exterior.webp",
+    tag: "Find Us in Khlong San",
     words: ["A Journey", "Through", "India"],
     sub: "Every Plate Tells a Story",
   },
@@ -133,6 +130,7 @@ export default function Hero() {
               alt={slide.tag}
               fill
               priority={current === 0}
+              quality={95}
               className="object-cover"
               sizes="100vw"
             />
