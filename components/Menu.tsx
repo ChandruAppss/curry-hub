@@ -3,7 +3,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Flame, Leaf } from "lucide-react";
-import Image from "next/image";
 
 type MenuItem = {
   name: string;
@@ -15,80 +14,69 @@ type MenuItem = {
 };
 
 const menuData: Record<string, MenuItem[]> = {
-  Starters: [
-    { name: "Samosa (2 pcs)", description: "Crispy pastry filled with spiced potatoes and peas, served with mint chutney", price: "฿120", veg: true },
-    { name: "Chicken Tikka", description: "Tandoor-roasted chicken with yoghurt marinade, served with raita", price: "฿220", spicy: true, popular: true },
-    { name: "Seekh Kebab", description: "Spiced minced lamb skewers grilled over charcoal, with green chutney", price: "฿240", spicy: true },
-    { name: "Paneer Tikka", description: "Marinated cottage cheese charred in the tandoor, with bell peppers", price: "฿200", veg: true, popular: true },
-    { name: "Onion Bhaji", description: "Crispy golden fritters of sliced onion in a spiced chickpea batter", price: "฿100", veg: true },
-    { name: "Soup of the Day", description: "Chef's selection Indian-spiced soup, ask your server for today's offering", price: "฿140", veg: true },
+  Appetizers: [
+    { name: "Pani Puri (8 pcs)", description: "Crisp hollow puris filled with spicy tamarind water, potatoes, and chickpeas", price: "฿149", veg: true },
+    { name: "Aloo Tikki Chat", description: "Two spiced potato patties topped with yogurt and chutneys", price: "฿120", veg: true },
+    { name: "Samosa (2 pcs)", description: "Golden pastry pockets stuffed with spiced potatoes and peas", price: "฿79", veg: true },
+    { name: "Papdi Chat", description: "Crisp papdis topped with yogurt, tangy chutneys, and spices", price: "฿120", veg: true },
+    { name: "Chicken Samosa (2 pcs)", description: "Crispy samosas stuffed with savoury minced chicken", price: "฿89" },
   ],
-  Vegetarian: [
-    { name: "Paneer Butter Masala", description: "Cottage cheese in a rich tomato-cream gravy with whole spices", price: "฿280", veg: true, popular: true },
-    { name: "Dal Makhani", description: "Black lentils slow-cooked overnight with cream, butter and spices", price: "฿240", veg: true },
-    { name: "Chana Masala", description: "Tangy chickpeas simmered with tomatoes, onions and aromatic spices", price: "฿220", veg: true, spicy: true },
-    { name: "Aloo Gobi", description: "Dry-cooked potato and cauliflower tossed with cumin and coriander", price: "฿200", veg: true },
-    { name: "Palak Paneer", description: "Fresh cottage cheese in creamy spiced spinach puree", price: "฿260", veg: true },
-    { name: "Mixed Vegetable Curry", description: "Seasonal vegetables in a fragrant tomato and coconut gravy", price: "฿220", veg: true },
+  "Main Course (Veg)": [
+    { name: "Palak Paneer", description: "Creamy spinach with cottage cheese", price: "฿180", veg: true, popular: true },
+    { name: "Dal Tadka", description: "Tempered yellow lentil curry", price: "฿179", veg: true },
+    { name: "Sahi Paneer", description: "Royal cottage cheese in creamy gravy", price: "฿240", veg: true },
+    { name: "Mix Vegetable Curry", description: "Seasonal vegetables in rich gravy", price: "฿189", veg: true },
+    { name: "Butter Paneer Masala", description: "Paneer in rich tomato butter sauce", price: "฿189", veg: true },
+    { name: "Bhindi Masala", description: "Spiced okra stir-fried", price: "฿189", veg: true },
+    { name: "Paneer Tikka Masala", description: "Grilled paneer in spicy tikka gravy", price: "฿229", veg: true, spicy: true },
+    { name: "Aloo Gobi Masala", description: "Spiced potato and cauliflower", price: "฿179", veg: true },
+    { name: "Dal Makhani", description: "Creamy black lentils cooked overnight", price: "฿189", veg: true },
+    { name: "Kadai Paneer", description: "Paneer with capsicum in spicy kadai gravy", price: "฿249", veg: true, spicy: true },
   ],
-  "Non-Vegetarian": [
-    { name: "Butter Chicken", description: "Tender chicken in silky tomato-cream gravy — our most-loved dish", price: "฿320", popular: true },
-    { name: "Chicken Tikka Masala", description: "Grilled tikka in a smoky, spiced masala gravy", price: "฿340", spicy: true },
-    { name: "Lamb Rogan Josh", description: "Slow-braised Kashmiri lamb in deep red aromatic gravy", price: "฿380", spicy: true, popular: true },
-    { name: "Fish Curry", description: "Coastal-style fish in tangy coconut and tamarind gravy", price: "฿360", spicy: true },
-    { name: "Chicken Korma", description: "Mild, creamy cashew and yoghurt gravy with aromatic spices", price: "฿320" },
-    { name: "Prawn Masala", description: "Tiger prawns in bold onion-tomato masala with coastal spices", price: "฿420", spicy: true },
+  Roll: [
+    { name: "Chicken Roll", description: "Tortilla wrap filled with juicy grilled chicken and fresh vegetables", price: "฿149", popular: true },
+    { name: "Chicken Sheekh Roll", description: "Wrap stuffed with spiced chicken seekh kebab and chutney", price: "฿189", spicy: true },
+    { name: "Egg Roll", description: "Tortilla wrap filled with a spiced egg omelet and veggies", price: "฿129" },
+    { name: "Mutton Sheekh Roll", description: "Wrap stuffed with succulent mutton seekh kebab and chutney", price: "฿200", spicy: true },
   ],
-  Tandoori: [
-    { name: "Tandoori Chicken (Full)", description: "Whole chicken marinated overnight and roasted in clay tandoor at 450°C", price: "฿480", spicy: true, popular: true },
-    { name: "Tandoori Chicken (Half)", description: "Half chicken — the same overnight marinade and clay oven perfection", price: "฿280", spicy: true },
-    { name: "Malai Tikka", description: "Chicken marinated in cream, cheese and mild spices — silky smooth", price: "฿320" },
-    { name: "Lamb Seekh Kebab", description: "Minced lamb with ginger, garlic and herbs pressed on skewers", price: "฿360", spicy: true },
-    { name: "Tandoori Prawns", description: "Jumbo prawns marinated in ajwain and lemon, grilled in tandoor", price: "฿440" },
+  "Vegetable Kabab": [
+    { name: "Paneer Tikka (6 pcs)", description: "Grilled cottage cheese cubes marinated in spiced yogurt", price: "฿249", veg: true, popular: true },
+    { name: "Hara Bhara Kabab (5 pcs)", description: "Crispy green patties made with spinach, peas, and spices", price: "฿219", veg: true },
+    { name: "Malai Paneer Tikka (6 pcs)", description: "Creamy, mild cottage cheese cubes grilled to perfection", price: "฿249", veg: true },
+    { name: "Aloo Tikki (5 pcs)", description: "Spiced potato patties served crispy", price: "฿199", veg: true },
   ],
-  Biryani: [
-    { name: "Chicken Biryani", description: "Basmati rice layered with saffron, fried onions and spiced chicken", price: "฿360", popular: true },
-    { name: "Lamb Biryani", description: "Tender lamb dum-cooked with fragrant basmati and whole spices", price: "฿400" },
-    { name: "Prawn Biryani", description: "Coastal biryani with tiger prawns and aromatic coconut spices", price: "฿440" },
-    { name: "Vegetable Biryani", description: "Garden vegetables with saffron-infused basmati and golden onions", price: "฿280", veg: true },
-    { name: "Paneer Biryani", description: "Cottage cheese and saffron rice — delicate, fragrant perfection", price: "฿300", veg: true },
+  "Biriyani and Rice (veg)": [
+    { name: "Mix Vegetable Biriyani", description: "Aromatic basmati rice cooked with mixed vegetables and spices", price: "฿199", veg: true, popular: true },
+    { name: "Jasmine Rice", description: "Fragrant, soft, and sticky jasmine rice", price: "฿49", veg: true },
+    { name: "Paneer Biriyani", description: "Flavorful biriyani layered with spiced paneer and rice", price: "฿229", veg: true },
+    { name: "Mix Vegetable Polau", description: "Mildly spiced rice dish with mixed vegetables", price: "฿119", veg: true },
+    { name: "Jeera Rice", description: "Basmati rice tempered with cumin seeds in ghee", price: "฿119", veg: true },
+    { name: "Vegetable Fried Rice", description: "Indo-Chinese style stir-fried rice with fresh vegetables", price: "฿149", veg: true },
+    { name: "Basmati Rice", description: "Steamed long-grain aromatic basmati rice", price: "฿89", veg: true },
   ],
-  Bread: [
-    { name: "Garlic Naan", description: "Tandoor-baked flatbread with garlic butter and coriander", price: "฿80", veg: true, popular: true },
-    { name: "Plain Naan", description: "Classic hand-stretched tandoor-baked flatbread", price: "฿60", veg: true },
-    { name: "Cheese Naan", description: "Naan filled with melted paneer — indulgent and rich", price: "฿100", veg: true },
-    { name: "Peshwari Naan", description: "Sweet naan stuffed with almonds, coconut and sultanas", price: "฿100", veg: true },
-    { name: "Paratha", description: "Whole wheat layered flatbread, shallow-fried with butter", price: "฿90", veg: true },
-    { name: "Puri (2 pcs)", description: "Puffed deep-fried whole wheat bread, light and airy", price: "฿80", veg: true },
+  "Naan Bread": [
+    { name: "Aloo / Onion / Gobi / Chilli Paratha", description: "Stuffed flatbread with your choice of filling", price: "฿79", veg: true },
+    { name: "Tandoori Plain Naan", description: "Traditional leavened bread baked in a clay oven", price: "฿59", veg: true },
+    { name: "Chicken Keema Naan", description: "Leavened bread stuffed with spiced minced chicken", price: "฿109" },
+    { name: "Butter Naan", description: "Soft tandoori naan brushed with rich butter", price: "฿59", veg: true, popular: true },
+    { name: "Cheese Naan", description: "Soft naan stuffed with melted cheese", price: "฿129", veg: true },
+    { name: "Tandoori Roti", description: "Whole wheat bread baked in a clay oven", price: "฿49", veg: true },
+    { name: "Garlic Naan", description: "Leavened bread flavored with garlic and butter", price: "฿79", veg: true },
+    { name: "Butter Roti", description: "Tandoori roti topped with butter", price: "฿49", veg: true },
+    { name: "Chilli Garlic Naan", description: "Spicy naan with garlic and chillies", price: "฿79", veg: true, spicy: true },
+    { name: "Laccha Paratha", description: "Multi-layered whole wheat flatbread", price: "฿65", veg: true },
   ],
-  Desserts: [
-    { name: "Gulab Jamun", description: "Soft milk-solid dumplings soaked in rose and cardamom syrup", price: "฿120", veg: true, popular: true },
-    { name: "Kulfi", description: "Traditional Indian ice cream — pistachio, mango or malai", price: "฿140", veg: true },
-    { name: "Gajar Ka Halwa", description: "Slow-cooked carrot pudding with ghee, milk and cardamom", price: "฿130", veg: true },
-    { name: "Rasmalai", description: "Spongy cheese patties in chilled saffron and cardamom cream", price: "฿150", veg: true },
-    { name: "Mango Lassi", description: "Thick blended mango and yoghurt — sweet and refreshing", price: "฿120", veg: true },
-  ],
-  Beverages: [
-    { name: "Masala Chai", description: "Spiced Indian tea brewed with ginger, cardamom and milk", price: "฿80", veg: true },
-    { name: "Mango Lassi", description: "Sweet mango and yoghurt blend — a classic Indian refresher", price: "฿120", veg: true },
-    { name: "Rose Sharbat", description: "Chilled rose petal syrup with basil seeds and cream", price: "฿100", veg: true },
-    { name: "Nimbu Pani", description: "Fresh lime water with mint and a pinch of black salt", price: "฿90", veg: true },
-    { name: "Soft Drinks", description: "Coca-Cola, Sprite, Fanta, Still Water, Sparkling Water", price: "฿80", veg: true },
-    { name: "Indian Tonic Water", description: "Premium tonic water with subtle Indian spice notes", price: "฿100", veg: true },
+  Drinks: [
+    { name: "Masaka Tea", description: "Spiced Indian tea brewed with aromatic herbs and milk", price: "฿30", veg: true },
+    { name: "Banana Lassi", description: "Creamy yogurt drink blended with ripe bananas", price: "฿89", veg: true },
+    { name: "Sweet / Salt Lassi", description: "Traditional yogurt-based drink, available sweet or salted", price: "฿79", veg: true },
+    { name: "Mineral Water", description: "Bottled mineral water for hydration", price: "฿20", veg: true },
+    { name: "Mango Lassi", description: "Refreshing yogurt drink blended with sweet mango pulp", price: "฿89", veg: true, popular: true },
+    { name: "Soft Drink", description: "Chilled carbonated soft drink of your choice", price: "฿35", veg: true },
   ],
 };
 
 const tabs = Object.keys(menuData);
-
-const tabImages: Record<string, string> = {
-  Starters: "/menu/Appetizers.jpg",
-  Vegetarian: "/menu/MainCourseVeg.jpg",
-  "Non-Vegetarian": "/menu/Rolls.png",
-  Tandoori: "/menu/VegKabab.jpg",
-  Biryani: "/menu/Biryani.png",
-  Bread: "/menu/NaanBread.jpg",
-  Beverages: "/menu/Drinks.png",
-};
 
 function TiltCard({ item, index }: { item: MenuItem; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -232,36 +220,11 @@ export default function Menu() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-3"
           >
-            {/* Category banner image */}
-            {tabImages[activeTab] && (
-              <div className="relative w-full rounded-2xl overflow-hidden mb-8" style={{ height: "260px" }}>
-                <Image
-                  src={tabImages[activeTab]}
-                  alt={activeTab}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width:1280px) 100vw, 1280px"
-                  quality={90}
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 60%, transparent 100%)" }}
-                />
-                <div className="absolute inset-0 flex items-center px-8">
-                  <div>
-                    <p className="text-white/55 text-xs font-medium tracking-widest uppercase mb-1">Our Menu</p>
-                    <h3 className="font-playfair text-3xl font-bold text-white">{activeTab}</h3>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {menuData[activeTab].map((item, i) => (
-                <TiltCard key={item.name} item={item} index={i} />
-              ))}
-            </div>
+            {menuData[activeTab].map((item, i) => (
+              <TiltCard key={item.name} item={item} index={i} />
+            ))}
           </motion.div>
         </AnimatePresence>
 
