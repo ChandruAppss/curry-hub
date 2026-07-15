@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Flame, Leaf } from "lucide-react";
+import Image from "next/image";
 
 type MenuItem = {
   name: string;
@@ -78,6 +79,16 @@ const menuData: Record<string, MenuItem[]> = {
 };
 
 const tabs = Object.keys(menuData);
+
+const tabImages: Record<string, string> = {
+  Starters: "/menu/Appetizers.jpg",
+  Vegetarian: "/menu/MainCourseVeg.jpg",
+  "Non-Vegetarian": "/menu/Rolls.png",
+  Tandoori: "/menu/VegKabab.jpg",
+  Biryani: "/menu/Biryani.png",
+  Bread: "/menu/NaanBread.jpg",
+  Beverages: "/menu/Drinks.png",
+};
 
 function TiltCard({ item, index }: { item: MenuItem; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -221,11 +232,36 @@ export default function Menu() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-3"
           >
-            {menuData[activeTab].map((item, i) => (
-              <TiltCard key={item.name} item={item} index={i} />
-            ))}
+            {/* Category banner image */}
+            {tabImages[activeTab] && (
+              <div className="relative w-full rounded-2xl overflow-hidden mb-8" style={{ height: "260px" }}>
+                <Image
+                  src={tabImages[activeTab]}
+                  alt={activeTab}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width:1280px) 100vw, 1280px"
+                  quality={90}
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 60%, transparent 100%)" }}
+                />
+                <div className="absolute inset-0 flex items-center px-8">
+                  <div>
+                    <p className="text-white/55 text-xs font-medium tracking-widest uppercase mb-1">Our Menu</p>
+                    <h3 className="font-playfair text-3xl font-bold text-white">{activeTab}</h3>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {menuData[activeTab].map((item, i) => (
+                <TiltCard key={item.name} item={item} index={i} />
+              ))}
+            </div>
           </motion.div>
         </AnimatePresence>
 
